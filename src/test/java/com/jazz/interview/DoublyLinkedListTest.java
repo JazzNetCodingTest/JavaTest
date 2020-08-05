@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class DoublyLinkedListTest {
 
@@ -40,6 +39,8 @@ class DoublyLinkedListTest {
 
         assertSingleElementList(dList, 5);
     }
+
+
 
     @Test
     void addWhenNonEmpty() {
@@ -142,6 +143,44 @@ class DoublyLinkedListTest {
     }
 
     @Test
+    void removeFirstWhenSingleEntryList(){
+        DoublyLinkedList dList = new DoublyLinkedList();
+        dList.add(5);
+
+        dList.removeFirst();
+        assertEmptyList(dList);
+    }
+
+    @Test
+    void removeLastWhenSingleEntryList(){
+        DoublyLinkedList dList = new DoublyLinkedList();
+        dList.add(5);
+
+        dList.removeLast();
+        assertEmptyList(dList);
+    }
+
+    @Test
+    void removeFirstWhenNonEmpty(){
+        DoublyLinkedList dList = new DoublyLinkedList();
+        dList.add(5);
+        dList.add(7);
+
+        dList.removeFirst();
+        assertSingleElementList(dList, 7);
+    }
+
+    @Test
+    void removeLastWhenNonEmpty(){
+        DoublyLinkedList dList = new DoublyLinkedList();
+        dList.add(5);
+        dList.add(7);
+
+        dList.removeLast();
+        assertSingleElementList(dList, 5);
+    }
+
+    @Test
     void setWithEmpty(){
         DoublyLinkedList dList = new DoublyLinkedList();
         assertEquals(0,dList.getSize());
@@ -161,37 +200,24 @@ class DoublyLinkedListTest {
         });
     }
 
+
     @Test
-    void getFirstWhenEmpty() {
+    void getWhenEmpty() {
         DoublyLinkedList dList = new DoublyLinkedList();
+        assertThrows(NoSuchElementException.class, () -> {
+            dList.getLast();
+        });
+        assertThrows(NoSuchElementException.class, () -> {
+            dList.get(0);
+        });
+        assertThrows(NoSuchElementException.class, () -> {
+            dList.get(-2);
+        });
         assertThrows(NoSuchElementException.class, () -> {
             dList.getFirst();
         });
     }
 
-    @Test
-    void getLastWhenEmpty() {
-        DoublyLinkedList dList = new DoublyLinkedList();
-        assertThrows(NoSuchElementException.class, () -> {
-            dList.getLast();
-        });
-    }
-
-    @Test
-    void getWithIndexWhenEmpty() {
-        DoublyLinkedList dList = new DoublyLinkedList();
-        assertThrows(NoSuchElementException.class, () -> {
-            dList.get(0);
-        });
-    }
-
-    @Test
-    void getWithNegativeIndex() {
-        DoublyLinkedList dList = new DoublyLinkedList();
-        assertThrows(NoSuchElementException.class, () -> {
-            dList.get(-2);
-        });
-    }
 
     @Test
     void addWhenEmptyWithWrongIndex() {
@@ -210,16 +236,6 @@ class DoublyLinkedListTest {
     }
 
     @Test
-    void addWhenNonEmptyWithNegativeIndex() {
-        DoublyLinkedList dList = new DoublyLinkedList();
-        dList.add(7);
-        dList.add(8);
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            dList.add(-8, 8);
-        });
-    }
-
-    @Test
     void addWhenNonEmptyWithWrongIndex() {
         DoublyLinkedList dList = new DoublyLinkedList();
         dList.add(7);
@@ -227,6 +243,20 @@ class DoublyLinkedListTest {
         assertEquals(2,dList.getSize());
         assertThrows(IndexOutOfBoundsException.class, () -> {
             dList.add(8, 8);
+        });
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            dList.add(-8, 8);
+        });
+    }
+
+    @Test
+    void removeWhenEmpty(){
+        DoublyLinkedList dList = new DoublyLinkedList();
+        assertThrows(NoSuchElementException.class, () -> {
+            dList.removeFirst();
+        });
+        assertThrows(NoSuchElementException.class, () -> {
+            dList.removeLast();
         });
     }
 
@@ -236,6 +266,16 @@ class DoublyLinkedListTest {
         assertEquals(value, dList.getLast());
         assertEquals(value, dList.get(0));
         assertEquals(1,dList.getSize());
+    }
+
+    private void assertEmptyList(DoublyLinkedList dList){
+        assertEquals(0,dList.getSize());
+        assertThrows(NoSuchElementException.class, () -> {
+            dList.getFirst();
+        });
+        assertThrows(NoSuchElementException.class, () -> {
+            dList.getLast();
+        });
     }
 
 

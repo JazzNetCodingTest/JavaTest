@@ -16,9 +16,9 @@ abstract class AbstractSequenceList {
 
     public abstract int get(int index);
 
-//    public abstract int removeFirst();
-//
-//    public abstract int removeLast();
+    public abstract int removeFirst();
+
+    public abstract int removeLast();
 //
 //    public abstract int remove(int index);
 //

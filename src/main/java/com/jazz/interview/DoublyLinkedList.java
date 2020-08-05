@@ -77,6 +77,34 @@ public class DoublyLinkedList extends AbstractSequenceList {
     }
 
     @Override
+    public int removeFirst() {
+        if (size == 0)
+            throw new NoSuchElementException();
+        int i = this.root.getItem();
+        size--;
+        if(this.root.getNext() != null)
+            this.root.getNext().addPrev(null);
+        else
+            this.end = null;
+        this.root = this.root.getNext();
+        return i;
+    }
+
+    @Override
+    public int removeLast() {
+        if (size == 0)
+            throw new NoSuchElementException();
+        int i = this.end.getItem();
+        size--;
+        if(this.end.getPrev() != null)
+            this.end.getPrev().addNext(null);
+        else
+            this.root = null;
+        this.end = this.end.getPrev();
+        return i;
+    }
+
+    @Override
     public int set(int index, int item) {
         final Node node = getNode(index);
         if (node == null)
