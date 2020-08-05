@@ -16,3 +16,7 @@ An Implementation of Doubly Linkedist can be found at [DoublyLinkedList.java](sr
 ##### Write a Java function which, when passed a string containing a mixture of bracket characters -  i.e. ‘{‘, ‘}’, ‘[‘, ‘]’, ‘(‘ and ‘)’, returns true if the brackets in the string are correctly balanced, and false otherwise. E.g. when called with “{[(())]()}” it should return true, but “{[(()])()}” should return false. Non-bracket characters in the string should be ignored.
 
 A Simple Bracket validator can be found at [BracketValidator.java](src/main/java/com/jazz/interview/BracketValidator.java) using Hashmap and Stack , with Junit tests.
+
+
+# Build and Code coverage
+Codecoverage is obtained using Jacoco, while build is done by Github Actions on push to master.
