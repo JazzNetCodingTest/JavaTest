@@ -89,16 +89,14 @@ public class DoublyLinkedList extends AbstractSequenceList {
      * Adds the item before the node
      */
     private void addItemBefore(int item, Node node) {
-        if (node != null) {
-            final Node prev = node.getPrev();
-            final Node newNode = new Node(item, prev, node);
-            node.addPrev(newNode);
-            if (prev == null)
-                this.root = newNode;
-            else
-                prev.addNext(newNode);
-            size++;
-        }
+        final Node prev = node.getPrev();
+        final Node newNode = new Node(item, prev, node);
+        node.addPrev(newNode);
+        if (prev == null)
+            this.root = newNode;
+        else
+            prev.addNext(newNode);
+        size++;
     }
 
     /**

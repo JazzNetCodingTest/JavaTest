@@ -178,10 +178,36 @@ class DoublyLinkedListTest {
     }
 
     @Test
+    void getWithNegativeIndex() {
+        DoublyLinkedList dList = new DoublyLinkedList();
+        assertThrows(NoSuchElementException.class, () -> {
+            dList.get(-2);
+        });
+    }
+
+    @Test
     void addWhenEmptyWithWrongIndex() {
         DoublyLinkedList dList = new DoublyLinkedList();
         assertThrows(IndexOutOfBoundsException.class, () -> {
             dList.add(2, 4);
+        });
+    }
+
+    @Test
+    void addWithNegativeIndex() {
+        DoublyLinkedList dList = new DoublyLinkedList();
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            dList.add(-2, 4);
+        });
+    }
+
+    @Test
+    void addWhenNonEmptyWithNegativeIndex() {
+        DoublyLinkedList dList = new DoublyLinkedList();
+        dList.add(7);
+        dList.add(8);
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            dList.add(-8, 8);
         });
     }
 
