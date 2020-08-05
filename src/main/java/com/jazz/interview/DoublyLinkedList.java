@@ -16,7 +16,9 @@ public class DoublyLinkedList extends AbstractSequenceList {
         this.end = null;
     }
 
-
+    /**
+     * Adds the item at the provided Index
+     */
     @Override
     public void add(int index, int item) {
         checkPositionInBounds(index);
@@ -26,6 +28,9 @@ public class DoublyLinkedList extends AbstractSequenceList {
             addItemBefore(item, getNode(index));
     }
 
+    /**
+     * Adds the item at the beginning of the list
+     */
     @Override
     public void addFirst(int item) {
         if (size > 0)
@@ -34,6 +39,9 @@ public class DoublyLinkedList extends AbstractSequenceList {
             addLast(item);
     }
 
+    /**
+     * Adds the item at the end of the list
+     */
     @Override
     public void addLast(int item) {
         final Node newNode = new Node(item, this.end, null);
@@ -45,11 +53,17 @@ public class DoublyLinkedList extends AbstractSequenceList {
         size++;
     }
 
+    /**
+     * Adds the item at the end of the list
+     */
     @Override
     public void add(int item) {
         addLast(item);
     }
 
+    /**
+     * gets the item at the beginning of the list
+     */
     @Override
     public int getFirst() {
         if (this.root == null)
@@ -58,6 +72,9 @@ public class DoublyLinkedList extends AbstractSequenceList {
 
     }
 
+    /**
+     * gets the item at the end of the list
+     */
     @Override
     public int getLast() {
         if (this.end == null)
@@ -65,6 +82,9 @@ public class DoublyLinkedList extends AbstractSequenceList {
         return this.end.getItem();
     }
 
+    /**
+     * gets the item at the index provided
+     */
     @Override
     public int get(int index) {
         checkIndexInclusive(index);
@@ -72,6 +92,9 @@ public class DoublyLinkedList extends AbstractSequenceList {
         return node.getItem();
     }
 
+    /**
+     * removes the item at the beginning
+     */
     @Override
     public int removeFirst() {
         if (size == 0)
@@ -79,6 +102,9 @@ public class DoublyLinkedList extends AbstractSequenceList {
         return removeNode(this.root);
     }
 
+    /**
+     * removes the item at the end
+     */
     @Override
     public int removeLast() {
         if (size == 0)
@@ -86,6 +112,9 @@ public class DoublyLinkedList extends AbstractSequenceList {
         return removeNode(this.end);
     }
 
+    /**
+     * removes the item at the index
+     */
     @Override
     public int remove(int index) {
         if (size == 0)
@@ -95,6 +124,9 @@ public class DoublyLinkedList extends AbstractSequenceList {
         return removeNode(node);
     }
 
+    /**
+     * removes the first occurrence of the item in the list and returns true. returns false, if the item is not found
+     */
     @Override
     public boolean removeFirstOccurrence(int item) {
         for (Node i = this.root; i != null; i = i.getNext()) {
@@ -106,6 +138,9 @@ public class DoublyLinkedList extends AbstractSequenceList {
         return false;
     }
 
+    /**
+     * sets the item at the index
+     */
     @Override
     public int set(int index, int item) {
         checkIndexInclusive(index);
@@ -114,6 +149,9 @@ public class DoublyLinkedList extends AbstractSequenceList {
         return item;
     }
 
+    /**
+     * returns the size of the list
+     */
     @Override
     public int getSize() {
         return size;
@@ -143,6 +181,9 @@ public class DoublyLinkedList extends AbstractSequenceList {
         return i;
     }
 
+    /**
+     * removes the node from the list by adjusting the pointers at the previous and the next node
+     */
     private int removeNode(Node node) {
         final Node prev = node.getPrev();
         final Node next = node.getNext();
@@ -162,6 +203,9 @@ public class DoublyLinkedList extends AbstractSequenceList {
         return node.getItem();
     }
 
+    /**
+     * checks whether the index is a valid one for read/remove operations
+     */
     private void checkIndexInclusive(int index) {
         if (!isValidIndex(index))
             throw new IndexOutOfBoundsException(indexDetails(index));
