@@ -1,5 +1,7 @@
 package com.jazz.interview;
 
+import java.util.Collection;
+
 abstract class AbstractSequenceList {
 
     public abstract void add(int index, int item);
@@ -9,6 +11,8 @@ abstract class AbstractSequenceList {
     public abstract void addLast(int item);
 
     public abstract void add(int item);
+
+    public abstract void addAll(Collection<Integer> c);
 
     public abstract int getFirst();
 

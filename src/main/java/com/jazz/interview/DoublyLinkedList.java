@@ -3,6 +3,7 @@ package com.jazz.interview;
 
 import com.jazz.interview.internal.Node;
 
+import java.util.Collection;
 import java.util.NoSuchElementException;
 
 public class DoublyLinkedList extends AbstractSequenceList {
@@ -14,6 +15,11 @@ public class DoublyLinkedList extends AbstractSequenceList {
     public DoublyLinkedList() {
         this.root = null;
         this.end = null;
+    }
+
+    public DoublyLinkedList(Collection<Integer> c){
+        this();
+        addAll(c);
     }
 
     /**
@@ -59,6 +65,14 @@ public class DoublyLinkedList extends AbstractSequenceList {
     @Override
     public void add(int item) {
         addLast(item);
+    }
+
+    @Override
+    public void addAll(Collection<Integer> c) {
+        Integer[] elements = (Integer[])c.toArray(new Integer[c.size()]);
+        for(int element: elements){
+            add(element);
+        }
     }
 
     /**
