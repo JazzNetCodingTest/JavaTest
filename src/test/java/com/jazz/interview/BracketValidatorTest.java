@@ -21,12 +21,21 @@ class BracketValidatorTest {
 
     @Test
     void testClosedBracketSeqWithOtherCharacters(){
-        assertTrue(bracketValidator.isValid("abcded{[((a))]()}"));
+        assertTrue(bracketValidator.isValid("abcded{}[]()"));
+    }
+
+    @Test
+    void testWithOtherCharacters(){
+        assertTrue(bracketValidator.isValid("a little blue cat"));
     }
 
     @Test
     void testUnClosedBracketSeq(){
         assertFalse(bracketValidator.isValid("{[(()])()}"));
+    }
+    @Test
+    void testUnClosedBracketSeqWithoutOpen(){
+        assertFalse(bracketValidator.isValid("}}}}}}"));
     }
 
 }
