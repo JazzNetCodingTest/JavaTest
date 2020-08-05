@@ -152,6 +152,18 @@ class DoublyLinkedListTest {
     }
 
     @Test
+    void removeWithIndexWhenSingleEntryList(){
+        DoublyLinkedList dList = new DoublyLinkedList();
+        dList.add(5);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            dList.remove(1);;
+        });
+        dList.remove(0);
+        assertEmptyList(dList);
+    }
+
+    @Test
     void removeLastWhenSingleEntryList(){
         DoublyLinkedList dList = new DoublyLinkedList();
         dList.add(5);
@@ -171,6 +183,45 @@ class DoublyLinkedListTest {
     }
 
     @Test
+    void removeFirstWithIndexWhenNonEmpty(){
+        DoublyLinkedList dList = new DoublyLinkedList();
+        dList.add(5);
+        dList.add(7);
+
+        dList.remove(0);
+        assertSingleElementList(dList, 7);
+    }
+    @Test
+    void removeLastWithIndexWhenNonEmpty(){
+        DoublyLinkedList dList = new DoublyLinkedList();
+        dList.add(5);
+        dList.add(7);
+
+        dList.remove(1);
+        assertSingleElementList(dList, 5);
+    }
+
+    @Test
+    void removeMiddleWithIndexWhenNonEmpty(){
+        DoublyLinkedList dList = new DoublyLinkedList();
+        dList.add(5);
+        dList.add(6);
+        dList.add(7);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            dList.remove(-1);;
+        });
+
+        dList.remove(1);
+        assertEquals(5, dList.getFirst());
+        assertEquals(7, dList.getLast());
+        assertEquals(5, dList.get(0));
+        assertEquals(7, dList.get(1));
+        assertEquals(2,dList.getSize());
+
+    }
+
+    @Test
     void removeLastWhenNonEmpty(){
         DoublyLinkedList dList = new DoublyLinkedList();
         dList.add(5);
@@ -184,7 +235,7 @@ class DoublyLinkedListTest {
     void setWithEmpty(){
         DoublyLinkedList dList = new DoublyLinkedList();
         assertEquals(0,dList.getSize());
-        assertThrows(NoSuchElementException.class, () -> {
+        assertThrows(IndexOutOfBoundsException.class, () -> {
             dList.set(2,20);
         });
     }
@@ -195,7 +246,7 @@ class DoublyLinkedListTest {
         dList.add(5);
         dList.add(7);
 
-        assertThrows(NoSuchElementException.class, () -> {
+        assertThrows(IndexOutOfBoundsException.class, () -> {
             dList.set(4,20);
         });
     }
@@ -207,10 +258,10 @@ class DoublyLinkedListTest {
         assertThrows(NoSuchElementException.class, () -> {
             dList.getLast();
         });
-        assertThrows(NoSuchElementException.class, () -> {
+        assertThrows(IndexOutOfBoundsException.class, () -> {
             dList.get(0);
         });
-        assertThrows(NoSuchElementException.class, () -> {
+        assertThrows(IndexOutOfBoundsException.class, () -> {
             dList.get(-2);
         });
         assertThrows(NoSuchElementException.class, () -> {

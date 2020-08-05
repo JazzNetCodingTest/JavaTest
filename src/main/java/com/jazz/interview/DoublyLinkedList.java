@@ -70,9 +70,8 @@ public class DoublyLinkedList extends AbstractSequenceList {
 
     @Override
     public int get(int index) {
+        checkIndexInclusive(index);
         final Node node = getNode(index);
-        if (node == null)
-            throw new NoSuchElementException();
         return node.getItem();
     }
 
@@ -105,10 +104,21 @@ public class DoublyLinkedList extends AbstractSequenceList {
     }
 
     @Override
-    public int set(int index, int item) {
+    public int remove(int index) {
+        checkIndexInclusive(index);
         final Node node = getNode(index);
-        if (node == null)
-            throw new NoSuchElementException();
+        return removeNode(node);
+    }
+
+    @Override
+    public int removeFirstOccurrence(int item) {
+        return 0;
+    }
+
+    @Override
+    public int set(int index, int item) {
+        checkIndexInclusive(index);
+        final Node node = getNode(index);
         node.setItem(item);
         return item;
     }
@@ -136,14 +146,34 @@ public class DoublyLinkedList extends AbstractSequenceList {
      * gets the node at the index if the index is valid
      */
     private Node getNode(int index) {
-        if (isValidIndex(index)) {
-            Node i = this.root;
-            for (int x = 0; x < index; x++)
-                i = i.getNext();
-            return i;
-        }
-        return null;
+        Node i = this.root;
+        for (int x = 0; x < index; x++)
+            i = i.getNext();
+        return i;
+    }
 
+    private int removeNode(Node node){
+        final Node prev = node.getPrev();
+        final Node next = node.getNext();
+        if(prev == null) {
+            this.root = next;
+        }else{
+            prev.addNext(next);
+            node.addPrev(null);
+        }
+        if(next == null){
+            this.end = prev;
+        }else{
+            next.addPrev(prev);
+            node.addNext(null);
+        }
+        size--;
+        return node.getItem();
+    }
+
+    private void checkIndexInclusive(int index){
+        if(!isValidIndex(index))
+            throw new IndexOutOfBoundsException(indexDetails(index));
     }
 
     /**
@@ -152,6 +182,7 @@ public class DoublyLinkedList extends AbstractSequenceList {
     private boolean isValidIndex(int index) {
         return index >= 0 && index < size;
     }
+
 
     /**
      * Checks whether the index is valid for add operation

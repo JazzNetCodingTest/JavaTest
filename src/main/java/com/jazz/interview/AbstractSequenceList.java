@@ -19,10 +19,10 @@ abstract class AbstractSequenceList {
     public abstract int removeFirst();
 
     public abstract int removeLast();
-//
-//    public abstract int remove(int index);
-//
-//    public abstract int removeFirstOccurrence(int item);
+
+    public abstract int remove(int index);
+
+    public abstract int removeFirstOccurrence(int item);
 
     public abstract int set(int index, int item);
 
