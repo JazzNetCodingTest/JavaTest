@@ -15,7 +15,7 @@ abstract class AbstractSequenceList {
     public abstract int getLast();
 
     public abstract int get(int index);
-//
+
 //    public abstract int removeFirst();
 //
 //    public abstract int removeLast();
@@ -27,6 +27,8 @@ abstract class AbstractSequenceList {
     public abstract int set(int index, int item);
 
     //TODO: size and toArray
+
+    public abstract int getSize();
 
 
 }

@@ -52,6 +52,7 @@ class DoublyLinkedListTest {
         assertEquals(6, dList.getLast());
         assertEquals(5, dList.get(0));
         assertEquals(7, dList.get(1));
+        assertEquals(3,dList.getSize());
     }
 
     @Test
@@ -65,6 +66,7 @@ class DoublyLinkedListTest {
         assertEquals(7, dList.getLast());
         assertEquals(5, dList.get(0));
         assertEquals(6, dList.get(1));
+        assertEquals(3,dList.getSize());
     }
 
     @Test
@@ -78,6 +80,7 @@ class DoublyLinkedListTest {
         assertEquals(6, dList.getLast());
         assertEquals(5, dList.get(0));
         assertEquals(7, dList.get(1));
+        assertEquals(3,dList.getSize());
     }
 
     @Test
@@ -91,6 +94,7 @@ class DoublyLinkedListTest {
         assertEquals(7, dList.getLast());
         assertEquals(6, dList.get(0));
         assertEquals(5, dList.get(1));
+        assertEquals(3,dList.getSize());
     }
 
 
@@ -106,6 +110,7 @@ class DoublyLinkedListTest {
         assertEquals(6, dList.get(0));
         assertEquals(5, dList.get(1));
         assertEquals(7, dList.get(2));
+        assertEquals(3,dList.getSize());
     }
 
     @Test
@@ -119,6 +124,7 @@ class DoublyLinkedListTest {
         assertEquals(6, dList.getLast());
         assertEquals(5, dList.get(0));
         assertEquals(7, dList.get(1));
+        assertEquals(3,dList.getSize());
     }
 
     @Test
@@ -132,11 +138,13 @@ class DoublyLinkedListTest {
         assertEquals(6, dList.getLast());
         assertEquals(5, dList.get(0));
         assertEquals(6, dList.get(1));
+        assertEquals(2,dList.getSize());
     }
 
     @Test
     void setWithEmpty(){
         DoublyLinkedList dList = new DoublyLinkedList();
+        assertEquals(0,dList.getSize());
         assertThrows(NoSuchElementException.class, () -> {
             dList.set(2,20);
         });
@@ -216,6 +224,7 @@ class DoublyLinkedListTest {
         DoublyLinkedList dList = new DoublyLinkedList();
         dList.add(7);
         dList.add(8);
+        assertEquals(2,dList.getSize());
         assertThrows(IndexOutOfBoundsException.class, () -> {
             dList.add(8, 8);
         });
@@ -226,6 +235,7 @@ class DoublyLinkedListTest {
         assertEquals(value, dList.getFirst());
         assertEquals(value, dList.getLast());
         assertEquals(value, dList.get(0));
+        assertEquals(1,dList.getSize());
     }
 
 

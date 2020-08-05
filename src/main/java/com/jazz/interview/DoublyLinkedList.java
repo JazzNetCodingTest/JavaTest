@@ -85,6 +85,11 @@ public class DoublyLinkedList extends AbstractSequenceList {
         return item;
     }
 
+    @Override
+    public int getSize() {
+        return size;
+    }
+
     /**
      * Adds the item before the node
      */
