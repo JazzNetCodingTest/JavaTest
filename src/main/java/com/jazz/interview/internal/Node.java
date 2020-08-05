@@ -15,6 +15,10 @@ public class Node {
         return item;
     }
 
+    public void setItem(int item) {
+        this.item = item;
+    }
+
     public Node getPrev() {
         return prev;
     }
@@ -29,10 +33,6 @@ public class Node {
 
     public void addNext(Node node) {
         this.next = node;
-    }
-
-    public void setItem(int item){
-        this.item = item;
     }
 
 

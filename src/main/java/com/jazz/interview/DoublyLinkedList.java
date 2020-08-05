@@ -28,13 +28,10 @@ public class DoublyLinkedList extends AbstractSequenceList {
 
     @Override
     public void addFirst(int item) {
-        final Node newNode = new Node(item, null, this.root);
-        if (this.root == null)
-            this.end = newNode;
+        if (size > 0)
+            addItemBefore(item, this.root);
         else
-            this.root.addPrev(newNode);
-        this.root = newNode;
-        size++;
+            addLast(item);
     }
 
     @Override
@@ -79,32 +76,20 @@ public class DoublyLinkedList extends AbstractSequenceList {
     public int removeFirst() {
         if (size == 0)
             throw new NoSuchElementException();
-        int i = this.root.getItem();
-        size--;
-        if(this.root.getNext() != null)
-            this.root.getNext().addPrev(null);
-        else
-            this.end = null;
-        this.root = this.root.getNext();
-        return i;
+        return removeNode(this.root);
     }
 
     @Override
     public int removeLast() {
         if (size == 0)
             throw new NoSuchElementException();
-        int i = this.end.getItem();
-        size--;
-        if(this.end.getPrev() != null)
-            this.end.getPrev().addNext(null);
-        else
-            this.root = null;
-        this.end = this.end.getPrev();
-        return i;
+        return removeNode(this.end);
     }
 
     @Override
     public int remove(int index) {
+        if (size == 0)
+            throw new NoSuchElementException();
         checkIndexInclusive(index);
         final Node node = getNode(index);
         return removeNode(node);
@@ -112,8 +97,8 @@ public class DoublyLinkedList extends AbstractSequenceList {
 
     @Override
     public boolean removeFirstOccurrence(int item) {
-        for (Node i = this.root;i != null; i = i.getNext()){
-            if(i.getItem() == item){
+        for (Node i = this.root; i != null; i = i.getNext()) {
+            if (i.getItem() == item) {
                 removeNode(i);
                 return true;
             }
@@ -158,18 +143,18 @@ public class DoublyLinkedList extends AbstractSequenceList {
         return i;
     }
 
-    private int removeNode(Node node){
+    private int removeNode(Node node) {
         final Node prev = node.getPrev();
         final Node next = node.getNext();
-        if(prev == null) {
+        if (prev == null) {
             this.root = next;
-        }else{
+        } else {
             prev.addNext(next);
             node.addPrev(null);
         }
-        if(next == null){
+        if (next == null) {
             this.end = prev;
-        }else{
+        } else {
             next.addPrev(prev);
             node.addNext(null);
         }
@@ -177,8 +162,8 @@ public class DoublyLinkedList extends AbstractSequenceList {
         return node.getItem();
     }
 
-    private void checkIndexInclusive(int index){
-        if(!isValidIndex(index))
+    private void checkIndexInclusive(int index) {
+        if (!isValidIndex(index))
             throw new IndexOutOfBoundsException(indexDetails(index));
     }
 
