@@ -5,9 +5,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ $default-branch ]
+    branches: [ master ]
   pull_request:
-    branches: [ $default-branch ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -23,6 +23,7 @@ jobs:
     - name: Build with Maven
       run: mvn clean install --file pom.xml
     - uses: codecov/codecov-action@v1
+      name: Code coverage
       with:  
         file: ./target/site/jacoco/jacoco.xml # optional
         fail_ci_if_error: true # optional (default = false)
