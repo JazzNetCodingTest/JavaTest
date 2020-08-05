@@ -111,8 +111,14 @@ public class DoublyLinkedList extends AbstractSequenceList {
     }
 
     @Override
-    public int removeFirstOccurrence(int item) {
-        return 0;
+    public boolean removeFirstOccurrence(int item) {
+        for (Node i = this.root;i != null; i = i.getNext()){
+            if(i.getItem() == item){
+                removeNode(i);
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

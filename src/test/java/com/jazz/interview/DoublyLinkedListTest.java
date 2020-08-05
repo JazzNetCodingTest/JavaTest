@@ -232,6 +232,52 @@ class DoublyLinkedListTest {
     }
 
     @Test
+    void removeFirstOccurrenceInAnEmptyList(){
+        DoublyLinkedList dList = new DoublyLinkedList();
+        assertFalse(dList.removeFirstOccurrence(10));
+        assertEmptyList(dList);
+    }
+    @Test
+    void removeFirstOccurrenceInAnNonEmptyList(){
+        DoublyLinkedList dList = new DoublyLinkedList();
+        dList.add(5);
+        assertTrue(dList.removeFirstOccurrence(5));
+        assertEmptyList(dList);
+    }
+
+    @Test
+    void removeInvalidFirstOccurrenceInAnNonEmptyList(){
+        DoublyLinkedList dList = new DoublyLinkedList();
+        dList.add(5);
+        assertFalse(dList.removeFirstOccurrence(10));
+        assertSingleElementList(dList, 5);
+    }
+
+    @Test
+    void removeFirstOccurrenceInAnNonEmptyBigList(){
+        DoublyLinkedList dList = new DoublyLinkedList();
+        dList.add(5);
+        dList.add(10);
+        dList.add(15);
+        dList.add(20);
+
+        assertTrue(dList.removeFirstOccurrence(10));
+        assertEquals(3, dList.getSize());
+    }
+
+    @Test
+    void removeFirstOccurrenceInAnNonEmptyBigListWithDuplicates(){
+        DoublyLinkedList dList = new DoublyLinkedList();
+        dList.add(5);
+        dList.add(10);
+        dList.add(10);
+        dList.add(10);
+
+        assertTrue(dList.removeFirstOccurrence(10));
+        assertEquals(3, dList.getSize());
+    }
+
+    @Test
     void setWithEmpty(){
         DoublyLinkedList dList = new DoublyLinkedList();
         assertEquals(0,dList.getSize());
