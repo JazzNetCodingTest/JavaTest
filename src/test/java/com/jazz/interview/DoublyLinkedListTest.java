@@ -122,6 +122,38 @@ class DoublyLinkedListTest {
     }
 
     @Test
+    void setWhenNonEmpty() {
+        DoublyLinkedList dList = new DoublyLinkedList();
+        dList.add(5);
+        dList.add(7);
+
+        dList.set(1,6);
+        assertEquals(5, dList.getFirst());
+        assertEquals(6, dList.getLast());
+        assertEquals(5, dList.get(0));
+        assertEquals(6, dList.get(1));
+    }
+
+    @Test
+    void setWithEmpty(){
+        DoublyLinkedList dList = new DoublyLinkedList();
+        assertThrows(NoSuchElementException.class, () -> {
+            dList.set(2,20);
+        });
+    }
+
+    @Test
+    void setWithWrongIndexWhenNotEmpty(){
+        DoublyLinkedList dList = new DoublyLinkedList();
+        dList.add(5);
+        dList.add(7);
+
+        assertThrows(NoSuchElementException.class, () -> {
+            dList.set(4,20);
+        });
+    }
+
+    @Test
     void getFirstWhenEmpty() {
         DoublyLinkedList dList = new DoublyLinkedList();
         assertThrows(NoSuchElementException.class, () -> {
@@ -138,7 +170,7 @@ class DoublyLinkedListTest {
     }
 
     @Test
-    void getWithWhenEmpty() {
+    void getWithIndexWhenEmpty() {
         DoublyLinkedList dList = new DoublyLinkedList();
         assertThrows(NoSuchElementException.class, () -> {
             dList.get(0);

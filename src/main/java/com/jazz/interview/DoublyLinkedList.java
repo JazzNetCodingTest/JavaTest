@@ -76,6 +76,15 @@ public class DoublyLinkedList extends AbstractSequenceList {
         return node.getItem();
     }
 
+    @Override
+    public int set(int index, int item) {
+        final Node node = getNode(index);
+        if (node == null)
+            throw new NoSuchElementException();
+        node.setItem(item);
+        return item;
+    }
+
     /**
      * Adds the item before the node
      */
@@ -102,7 +111,7 @@ public class DoublyLinkedList extends AbstractSequenceList {
                 i = i.getNext();
             return i;
         }
-        return this.end;
+        return null;
 
     }
 

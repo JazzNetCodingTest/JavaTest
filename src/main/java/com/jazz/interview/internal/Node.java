@@ -1,7 +1,7 @@
 package com.jazz.interview.internal;
 
 public class Node {
-    private final Integer item;
+    private int item;
     private Node prev;
     private Node next;
 
@@ -11,7 +11,7 @@ public class Node {
         this.next = next;
     }
 
-    public Integer getItem() {
+    public int getItem() {
         return item;
     }
 
@@ -29,6 +29,10 @@ public class Node {
 
     public void addNext(Node node) {
         this.next = node;
+    }
+
+    public void setItem(int item){
+        this.item = item;
     }
 
 
