@@ -17,6 +17,10 @@ public class BracketValidator {
         }
     };
 
+    /*
+     *  Using a simple hashmap to hold all the open and close bracket symbols so the pair can be lookedup easily using either keyset or values.
+     *  Stack is used as a LIFO queue to see if the brackets are matched and the brackets are popped from stack once a closing mathc is found
+     */
     public boolean isValid(String input) {
         if (StringUtils.isEmpty(input))
             return true;
