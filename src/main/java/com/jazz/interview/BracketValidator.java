@@ -8,7 +8,6 @@ import java.util.Stack;
 
 public class BracketValidator {
 
-    Stack<Character> stack = new Stack<Character>();
     Map<Character, Character> brackets = new HashMap<Character, Character>() {
         {
             put('(', ')');
@@ -22,12 +21,13 @@ public class BracketValidator {
      *  Stack is used as a LIFO queue to see if the brackets are matched and the brackets are popped from stack once a closing mathc is found
      */
     public boolean isValid(String input) {
+        Stack<Character> stack = new Stack<Character>();
         if (StringUtils.isEmpty(input))
             return true;
         char[] chars = input.toCharArray();
         for (char ch : chars) {
             //if open brackets, push it o the stack
-            if (brackets.keySet().contains(ch)) {
+            if (brackets.containsKey(ch)) {
                 stack.push(ch);
             } else if (brackets.values().contains(ch)) {
                 //if close bracket, and can find a match in the previous element, remove the set else return false
