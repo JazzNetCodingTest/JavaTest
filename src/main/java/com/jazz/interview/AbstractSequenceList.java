@@ -30,8 +30,6 @@ abstract class AbstractSequenceList {
 
     public abstract int set(int index, int item);
 
-    //TODO: size and toArray
-
     public abstract int getSize();
 
 
