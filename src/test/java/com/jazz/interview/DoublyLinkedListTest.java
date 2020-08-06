@@ -44,7 +44,7 @@ class DoublyLinkedListTest {
 
     @Test
     void addWhenNonEmpty() {
-        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5,7));
+        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5, 7));
 
         dList.add(6);
         assertEquals(5, dList.getFirst());
@@ -55,16 +55,16 @@ class DoublyLinkedListTest {
     }
 
     @Test
-    void addallWhenEmpty(){
+    void addallWhenEmpty() {
         DoublyLinkedList dList = new DoublyLinkedList();
-        dList.addAll(Arrays.asList(5,7));
+        dList.addAll(Arrays.asList(5, 7));
 
-        assertEquals(2,dList.getSize());
+        assertEquals(2, dList.getSize());
     }
 
     @Test
     void addWithIndexWhenNonEmpty() {
-        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5,7));
+        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5, 7));
 
         dList.add(1, 6);
         assertEquals(5, dList.getFirst());
@@ -76,7 +76,7 @@ class DoublyLinkedListTest {
 
     @Test
     void addWithLastIndexWhenNonEmpty() {
-        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5,7));
+        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5, 7));
 
         dList.add(2, 6);
         assertEquals(5, dList.getFirst());
@@ -88,7 +88,7 @@ class DoublyLinkedListTest {
 
     @Test
     void addWithZeroIndexWhenNonEmpty() {
-        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5,7));
+        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5, 7));
 
         dList.add(0, 6);
         assertEquals(6, dList.getFirst());
@@ -101,7 +101,7 @@ class DoublyLinkedListTest {
 
     @Test
     void addFirstWhenNonEmpty() {
-        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5,7));
+        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5, 7));
 
         dList.addFirst(6);
         assertEquals(6, dList.getFirst());
@@ -114,7 +114,7 @@ class DoublyLinkedListTest {
 
     @Test
     void addLastWhenNonEmpty() {
-        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5,7));
+        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5, 7));
 
         dList.addLast(6);
         assertEquals(5, dList.getFirst());
@@ -126,7 +126,7 @@ class DoublyLinkedListTest {
 
     @Test
     void setWhenNonEmpty() {
-        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5,7));
+        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5, 7));
 
         dList.set(1, 6);
         assertEquals(5, dList.getFirst());
@@ -166,7 +166,7 @@ class DoublyLinkedListTest {
 
     @Test
     void removeFirstWhenNonEmpty() {
-        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5,7));
+        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5, 7));
 
         dList.removeFirst();
         assertSingleElementList(dList, 7);
@@ -174,7 +174,7 @@ class DoublyLinkedListTest {
 
     @Test
     void removeFirstWithIndexWhenNonEmpty() {
-        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5,7));
+        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5, 7));
 
         dList.remove(0);
         assertSingleElementList(dList, 7);
@@ -182,7 +182,7 @@ class DoublyLinkedListTest {
 
     @Test
     void removeLastWithIndexWhenNonEmpty() {
-        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5,7));
+        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5, 7));
 
         dList.remove(1);
         assertSingleElementList(dList, 5);
@@ -190,7 +190,7 @@ class DoublyLinkedListTest {
 
     @Test
     void removeMiddleWithIndexWhenNonEmpty() {
-        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5,6,7));
+        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5, 6, 7));
 
         assertThrows(IndexOutOfBoundsException.class, () -> dList.remove(-1));
         dList.remove(1);
@@ -204,7 +204,7 @@ class DoublyLinkedListTest {
 
     @Test
     void removeLastWhenNonEmpty() {
-        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5,7));
+        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5, 7));
 
         dList.removeLast();
         assertSingleElementList(dList, 5);
@@ -233,7 +233,7 @@ class DoublyLinkedListTest {
 
     @Test
     void removeFirstOccurrenceInAnNonEmptyBigList() {
-        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5,10,15,20));
+        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5, 10, 15, 20));
 
         assertTrue(dList.removeFirstOccurrence(10));
         assertEquals(3, dList.getSize());
@@ -241,7 +241,7 @@ class DoublyLinkedListTest {
 
     @Test
     void removeFirstOccurrenceInAnNonEmptyBigListWithDuplicates() {
-        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5,10,15,20));
+        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5, 10, 15, 20));
 
         assertTrue(dList.removeFirstOccurrence(10));
         assertEquals(3, dList.getSize());
@@ -256,7 +256,7 @@ class DoublyLinkedListTest {
 
     @Test
     void setWithWrongIndexWhenNotEmpty() {
-        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5,7));
+        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(5, 7));
 
         assertThrows(IndexOutOfBoundsException.class, () -> dList.set(4, 20));
     }
@@ -286,7 +286,7 @@ class DoublyLinkedListTest {
 
     @Test
     void addWhenNonEmptyWithWrongIndex() {
-        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(7,8));
+        DoublyLinkedList dList = new DoublyLinkedList(Arrays.asList(7, 8));
 
         assertEquals(2, dList.getSize());
         assertThrows(IndexOutOfBoundsException.class, () -> dList.add(8, 8));

@@ -17,7 +17,7 @@ public class DoublyLinkedList extends AbstractSequenceList {
         this.end = null;
     }
 
-    public DoublyLinkedList(Collection<Integer> c){
+    public DoublyLinkedList(Collection<Integer> c) {
         this();
         addAll(c);
     }
@@ -69,8 +69,8 @@ public class DoublyLinkedList extends AbstractSequenceList {
 
     @Override
     public void addAll(Collection<Integer> c) {
-        Integer[] elements = (Integer[])c.toArray(new Integer[c.size()]);
-        for(int element: elements){
+        Integer[] elements = (Integer[]) c.toArray(new Integer[c.size()]);
+        for (int element : elements) {
             add(element);
         }
     }
