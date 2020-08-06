@@ -18,7 +18,7 @@ public class BracketValidator {
 
     /*
      *  Using a simple hashmap to hold all the open and close bracket symbols so the pair can be lookedup easily using either keyset or values.
-     *  Stack is used as a LIFO queue to see if the brackets are matched and the brackets are popped from stack once a closing mathc is found
+     *  Stack is used as a LIFO queue to see if the brackets are matched and the brackets are popped from stack once a closing match is found
      */
     public boolean isValid(String input) {
         Stack<Character> stack = new Stack<Character>();
@@ -29,6 +29,7 @@ public class BracketValidator {
             //if open brackets, push it o the stack
             if (brackets.containsKey(ch)) {
                 stack.push(ch);
+                //Need if condition to make sure we dont work on any other characters other than brackets
             } else if (brackets.values().contains(ch)) {
                 //if close bracket, and can find a match in the previous element, remove the set else return false
                 if (!stack.empty() && brackets.get(stack.peek()) == ch) {
